@@ -18,3 +18,12 @@ The client side represents coupon information to end users, and allows them to s
 ### Client Side Architecture
 
 Client side application is built with [React Native]() by Facebook. React Native is a JavaScript framework that can build native mobile application using JavaScript.
+
+
+### Data schema
+
+See [QPon Data Schema](docs/data-schema.md).
+
+### API
+
+See [Server API Specification](docs/api.md).
