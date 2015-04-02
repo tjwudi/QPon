@@ -6,9 +6,10 @@ List all coupons
 
 ###### Params
 
-|       name      |         description                                   |
-|-----------------|-------------------------------------------------------|
-|     `page`      |  Page number                                          |
+|       name      |         description   | Required? |  Default |
+|-----------------|-----------------------|-----------|----------|
+|     `page`      |  Page number          |     false |     1    |
+|     `records`   |  Records per page     |     false |     15   |
 
 ---
 
@@ -18,7 +19,7 @@ Search coupon
 
 ###### Params
 
-|       name      |         description                                   |
-|-----------------|-------------------------------------------------------|
-|     `keyword`   |  Keyword to match                                     |
-|     `field`     |  Field to match. One of `title`.                      |
+|       name      |         description                    |  Required? |  Default | 
+|-----------------|----------------------------------------|------------|----------|
+|     `keyword`   |  Keyword to match                      |  true      |    N/A   |
+|     `field`     |  Field to match. One of `title`.       |   false    |   "title"|
