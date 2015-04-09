@@ -2,7 +2,8 @@
 
 var React = require('react-native'),
   url = require('url'),
-  config = require('./config');
+  config = require('./config'),
+  ListItem = require('./ListItem');
 
 var {
   ListView,
@@ -45,7 +46,7 @@ var List = React.createClass({
       return (
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData.title}</Text>} 
+          renderRow={(rowData) => <ListItem coupon={rowData}/>} 
         />
       );
     }
