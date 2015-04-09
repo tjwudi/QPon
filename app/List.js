@@ -22,14 +22,13 @@ var styles = React.StyleSheet.create({
 var List = React.createClass({
   getInitialState: function() {
     var dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
+      rowHasChanged: (r1, r2) => r1._id !== r2._id
     });
     return {
       dataSource: dataSource.cloneWithRows([])
     }
   },
   fetchData: function() {
-    console.log('haha');
     fetch(url.resolve(config.SERVER_BASE, 'coupons'))
       .then((response) => response.json())
       .then((data) => {
