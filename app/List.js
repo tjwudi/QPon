@@ -1,12 +1,22 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react-native'),
+  url = require('url'),
+  config = require('./config');
 
 var {
   ListView,
-  Text
+  Text,
+  ScrollView,
+  ActivityIndicatorIOS,
+  activityIndicator
 } = React
 
+var styles = React.StyleSheet.create({
+  activityIndicator: {
+    marginTop: 10
+  }
+});
 
 var List = React.createClass({
   getInitialState: function() {
@@ -14,16 +24,42 @@ var List = React.createClass({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
     return {
-      dataSource: dataSource.cloneWithRows(['row1', 'row2', 'row3', 'row4', 'row5', 'row6'])
+      dataSource: dataSource.cloneWithRows([])
     }
   },
+  fetchData: function() {
+    console.log('haha');
+    fetch(url.resolve(config.SERVER_BASE, 'coupons'))
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(data)
+        });
+      });
+  },
+  componentDidMount: function() {
+    this.fetchData();
+  },
   render: function() {
-    return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>} 
-      />
-    );
+    if (this.state.dataSource.getRowCount() > 0) {
+      return (
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <Text>{rowData.title}</Text>} 
+        />
+      );
+    }
+    else {
+      return (
+        <ScrollView>
+          <ActivityIndicatorIOS
+            animating={true}
+            size="large"
+            style={styles.activityIndicator}
+          />
+        </ScrollView>
+      );
+    }
   }
 });
 
