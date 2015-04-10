@@ -51,7 +51,7 @@ var List = React.createClass({
     }
     else {
       return (
-        <ScrollView>
+        <ScrollView bounces={false}>
           <ActivityIndicatorIOS
             animating={true}
             size="large"

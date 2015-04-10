@@ -38,10 +38,13 @@ var styles = React.StyleSheet.create({
 });
 
 var ListItem = React.createClass({
-  navigateToDetail: function() {
+  _navigateToDetail: function() {
     this.props.navigator.push({
       component: Detail,
-      title: this.props.coupon.title
+      title: '优惠券详情',
+      passProps: {
+        coupon: this.props.coupon
+      }
     });
   },
 
@@ -55,7 +58,7 @@ var ListItem = React.createClass({
     }
 
     return (
-      <TouchableHighlight underlayColor="#ccc" onPress={this.navigateToDetail}>
+      <TouchableHighlight underlayColor="#ccc" onPress={this._navigateToDetail}>
         <View style={styles.container}>
           <View style={styles.leftCol}>
             <Image style={styles.couponImage} source={require('image!placeholder')}/>
