@@ -1,6 +1,7 @@
 'use strict';
 
-var React = require('react-native');
+var React = require('react-native'),
+  Detail = require('./Detail');
 
 var {
   Text,
@@ -37,6 +38,13 @@ var styles = React.StyleSheet.create({
 });
 
 var ListItem = React.createClass({
+  navigateToDetail: function() {
+    this.props.navigator.push({
+      component: Detail,
+      title: this.props.coupon.title
+    });
+  },
+
   render: function() {
     var companyTitle = <Text style={styles.couponCompanyTitle}></Text>;
 
@@ -47,7 +55,7 @@ var ListItem = React.createClass({
     }
 
     return (
-      <TouchableHighlight underlayColor="#ccc">
+      <TouchableHighlight underlayColor="#ccc" onPress={this.navigateToDetail}>
         <View style={styles.container}>
           <View style={styles.leftCol}>
             <Image style={styles.couponImage} source={require('image!placeholder')}/>

@@ -45,7 +45,7 @@ var List = React.createClass({
       return (
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <ListItem coupon={rowData}/>} 
+          renderRow={(rowData) => <ListItem navigator={this.props.navigator} coupon={rowData}/>} 
         />
       );
     }
