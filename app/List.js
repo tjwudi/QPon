@@ -40,10 +40,26 @@ var List = React.createClass({
   componentDidMount: function() {
     this.fetchData();
   },
+  search: function(keyword) {
+    var urlObj = url.parse(url.resolve(config.SERVER_BASE, 'coupons/search'));
+    urlObj.query = {
+      keyword: keyword,
+      field: 'title'
+    };
+    console.log(url.format(urlObj));
+    fetch(url.format(urlObj))
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(data)
+        });
+      });
+  },
   render: function() {
     if (this.state.dataSource.getRowCount() > 0) {
       return (
         <ListView
+          automaticallyAdjustContentInsets={false}
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <ListItem navigator={this.props.navigator} coupon={rowData}/>} 
         />

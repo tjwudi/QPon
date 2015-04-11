@@ -12,7 +12,8 @@ var styles = React.StyleSheet.create({
     flex: 1
   },
   wrapper: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    flexDirection: 'column'
   }
 });
 
