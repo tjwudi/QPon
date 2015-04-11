@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native'),
-  List = require('./List');
+  Main = require('./Main');
 
 var {
   NavigatorIOS
@@ -21,7 +21,7 @@ var App = React.createClass({
     return (
       <NavigatorIOS
         initialRoute={{
-          component: List,
+          component: Main,
           title: '发现'
         }}
         itemWrapperStyle={styles.wrapper}
