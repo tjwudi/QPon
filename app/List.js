@@ -32,7 +32,6 @@ var List = React.createClass({
     fetch(url.resolve(config.SERVER_BASE, 'coupons'))
       .then((response) => response.json())
       .then((data) => {
-        console.log('x');
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(data)
         });
