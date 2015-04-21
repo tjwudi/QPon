@@ -46,7 +46,6 @@ var List = React.createClass({
       keyword: keyword,
       field: 'title'
     };
-    console.log(url.format(urlObj));
     fetch(url.format(urlObj))
       .then((response) => response.json())
       .then((data) => {
