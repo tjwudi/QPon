@@ -61,7 +61,7 @@ var ListItem = React.createClass({
       <TouchableHighlight underlayColor="#ccc" onPress={this._navigateToDetail}>
         <View style={styles.container}>
           <View style={styles.leftCol}>
-            <Image style={styles.couponImage} source={require('image!placeholder')}/>
+            <Image style={styles.couponImage} source={{uri: this.props.coupon.imageURL}}/>
           </View>
           <View style={styles.rightCol}>
             <Text style={styles.couponTitle}>{this.props.coupon.title}</Text>
